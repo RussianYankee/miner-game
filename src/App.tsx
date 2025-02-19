@@ -1,11 +1,6 @@
 import { useState } from 'react'
 import './css/app.css'
-
-interface GameConfig {
-  width: number;
-  height: number;
-  mines: number;
-}
+import GameControls, { GameConfig } from './components/GameControls';
 
 type CellState = {
   isMine: boolean;
@@ -160,40 +155,8 @@ function App() {
   return (
     <div className="minesweeper">
       <h1>Minesweeper</h1>
-      
-      <form onSubmit={handleConfigSubmit} className="config-form">
-        <div>
-          <label>Width: </label>
-          <input
-            type="number"
-            name="width"
-            min="5"
-            max="30"
-            defaultValue={gameConfig.width}
-          />
-        </div>
-        <div>
-          <label>Height: </label>
-          <input
-            type="number"
-            name="height"
-            min="5"
-            max="30"
-            defaultValue={gameConfig.height}
-          />
-        </div>
-        <div>
-          <label>Mines: </label>
-          <input
-            type="number"
-            name="mines"
-            min="1"
-            max={gameConfig.width * gameConfig.height - 1}
-            defaultValue={gameConfig.mines}
-          />
-        </div>
-        <button type="submit">New Game</button>
-      </form>
+
+      <GameControls gameConfig={gameConfig} handleFormSubmit={handleConfigSubmit} />
 
       {gameStatus !== 'playing' && (
         <div className="game-status">
