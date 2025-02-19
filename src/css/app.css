@@ -2,6 +2,20 @@
   max-width: 1280px;
   margin: 0 auto;
   text-align: center;
+  --mine-1-color: blue;
+  --mine-2-color: green;
+  --mine-3-color: red;
+  --mine-4-color: purple;
+  --mine-5-color: maroon;
+  --mine-6-color: turquoise;
+  --mine-7-color: black;
+  --mine-8-color: gray;
+  --border-color: #999;
+  --unopened-cell-color: #ddd;
+  --revealed-cell-color: #fff;
+  --flagged-cell-color: #ffeb3b;
+  --mine-cell-color: #ff9999;
+  --hovered-cell-color: #ccc;
 }
 
 .minesweeper {
@@ -41,7 +55,7 @@
 }
 
 .game-board {
-  border: 2px solid #999;
+  border: 2px solid var(--border-color);
   display: inline-block;
 }
 
@@ -52,27 +66,27 @@
 .cell {
   width: 30px;
   height: 30px;
-  border: 1px solid #999;
+  border: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  background-color: #ddd;
+  background-color: var(--unopened-cell-color);
   font-weight: bold;
 }
 
 .cell:hover {
-  background-color: #ccc;
+  background-color: var(--hovered-cell-color);
 }
 
 .cell.revealed {
-  background-color: #fff;
+  background-color: var(--revealed-cell-color);
 }
 
 .cell.revealed.mine {
-  background-color: #ff9999;
+  background-color: var(--mine-cell-color);
 }
 
 .cell.flagged {
-  background-color: #ffeb3b;
+  background-color: var(--flagged-cell-color);
 }

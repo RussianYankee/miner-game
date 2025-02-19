@@ -212,6 +212,7 @@ function App() {
                 } ${cell.isRevealed && cell.isMine ? 'mine' : ''}`}
                 onClick={() => handleCellClick(x, y)}
                 onContextMenu={(e) => handleCellRightClick(e, x, y)}
+                style={cell.isRevealed && !cell.isMine && cell.neighborMines > 0 ? {color: `var(--mine-${cell.neighborMines}-color)`} : {}}
               >
                 {cell.isRevealed && !cell.isMine && cell.neighborMines > 0
                   ? cell.neighborMines
