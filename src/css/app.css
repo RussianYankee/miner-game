@@ -11,8 +11,10 @@
   --mine-7-color: black;
   --mine-8-color: gray;
   --border-color: #999;
-  --unopened-cell-color: #ddd;
-  --revealed-cell-color: #fff;
+  --border-color-faded: #99999952;
+  --unopened-cell-color: #c2c2c2;
+  --revealed-cell-color: #d1d1d1;
+  --empty-cell-color: #dfdfdf;
   --flagged-cell-color: #ffeb3b;
   --mine-cell-color: #ff9999;
   --hovered-cell-color: #ccc;
@@ -66,7 +68,10 @@
 .cell {
   width: 30px;
   height: 30px;
-  border: 1px solid var(--border-color);
+  border-right: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
+  border-top: 2px solid white;
+  border-left: 2px solid white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,6 +86,11 @@
 
 .cell.revealed {
   background-color: var(--revealed-cell-color);
+  border: 2px solid var(--border-color-faded);
+}
+
+.cell.revealed.empty {
+  background-color: var(--empty-cell-color);
 }
 
 .cell.revealed.mine {

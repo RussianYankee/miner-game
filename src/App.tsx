@@ -209,7 +209,7 @@ function App() {
                 key={`${x}-${y}`}
                 className={`cell ${cell.isRevealed ? 'revealed' : ''} ${
                   cell.isFlagged ? 'flagged' : ''
-                } ${cell.isRevealed && cell.isMine ? 'mine' : ''}`}
+                } ${cell.isRevealed && cell.isMine ? 'mine' : ''} ${cell.isRevealed && !cell.isMine && cell.neighborMines === 0 ? 'empty' : ''}`}
                 onClick={() => handleCellClick(x, y)}
                 onContextMenu={(e) => handleCellRightClick(e, x, y)}
                 style={cell.isRevealed && !cell.isMine && cell.neighborMines > 0 ? {color: `var(--mine-${cell.neighborMines}-color)`} : {}}
