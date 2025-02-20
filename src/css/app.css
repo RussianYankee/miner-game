@@ -13,8 +13,8 @@
   --border-color: #999;
   --border-color-faded: #99999952;
   --unopened-cell-color: #c2c2c2;
-  --revealed-cell-color: #d1d1d1;
-  --empty-cell-color: #dfdfdf;
+  --revealed-cell-color: #e6e6e6;
+  --empty-cell-color: #f3f3f3;
   --flagged-cell-color: #ffeb3b;
   --mine-cell-color: #ff9999;
   --hovered-cell-color: #ccc;
