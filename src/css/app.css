@@ -66,6 +66,7 @@
 .game-board {
   border: var(--border-width) solid var(--border-color);
   display: inline-block;
+  background-color: var(--border-color);
 }
 
 .board-row {
