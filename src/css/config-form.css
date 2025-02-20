@@ -5,13 +5,17 @@
     align-items: center;
   }
   
-  .config-form div {
+  .config___item {
     display: flex;
     gap: 5px;
     align-items: center;
   }
   
-  .config-form input {
+  .config__item-label {
+    font-family: "Ribeye", serif;
+  }
+  
+  .config__item-input {
     width: 60px;
     padding: 10px;
     border: 1px solid var(--border-color);
@@ -25,10 +29,29 @@
     border: 1px solid darkgreen;
     background-color: lightgreen;
     color: black;
-    font-weight: bold;
+    font-family: "Ribeye", serif;
+    font-weight: 700;
   }
 
   .config-form button:hover {
     background-color: darkgreen;
     color: white;
+  }
+
+  @media screen and (max-width: 768px) {
+    .config-form {
+      flex-direction: column;
+      align-items: stretch;
+      width: 40%;
+    }
+  
+    .config__item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .config-form input {
+      width: 35%;
+    }
   }

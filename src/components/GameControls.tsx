@@ -13,9 +13,9 @@ interface FormProps {
 const GameControls = (formProps: FormProps) => {
   return (
     <form onSubmit={formProps.handleFormSubmit} className="config-form">
-        <div>
-          <label>Width: </label>
-          <input
+        <div className="config__item">
+          <label className="config__item-label">Width: </label>
+          <input className="config__item-input"
             type="number"
             name="width"
             min="5"
@@ -23,9 +23,9 @@ const GameControls = (formProps: FormProps) => {
             defaultValue={formProps.gameConfig.width}
           />
         </div>
-        <div>
-          <label>Height: </label>
-          <input
+        <div className="config__item">
+          <label className="config__item-label">Height: </label>
+          <input className="config__item-input"
             type="number"
             name="height"
             min="5"
@@ -33,9 +33,9 @@ const GameControls = (formProps: FormProps) => {
             defaultValue={formProps.gameConfig.height}
           />
         </div>
-        <div>
-          <label>Mines: </label>
-          <input
+        <div className="config__item">
+          <label className="config__item-label">Mines: </label>
+          <input className="config__item-input"
             type="number"
             name="mines"
             min="1"
