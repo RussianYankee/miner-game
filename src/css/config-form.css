@@ -1,4 +1,4 @@
-.config-form {
+.config__form {
     margin: 20px 0;
     display: flex;
     gap: 10px;
@@ -22,7 +22,7 @@
     border-radius: 6px;
   }
   
-  .config-form button {
+  .config__form-button {
     padding: 10px 10px;
     cursor: pointer;
     border-radius: 6px;
@@ -33,13 +33,13 @@
     font-weight: 700;
   }
 
-  .config-form button:hover {
+  .config__form-button:hover {
     background-color: darkgreen;
     color: white;
   }
 
   @media screen and (max-width: 768px) {
-    .config-form {
+    .config__form {
       flex-direction: column;
       align-items: stretch;
       width: 40%;
@@ -51,7 +51,7 @@
       align-items: center;
     }
   
-    .config-form input {
+    .config__item-input {
       width: 35%;
     }
   }

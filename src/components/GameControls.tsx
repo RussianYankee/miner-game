@@ -12,7 +12,7 @@ interface FormProps {
 
 const GameControls = (formProps: FormProps) => {
   return (
-    <form onSubmit={formProps.handleFormSubmit} className="config-form">
+    <form onSubmit={formProps.handleFormSubmit} className="config__form">
         <div className="config__item">
           <label className="config__item-label">Width: </label>
           <input className="config__item-input"
@@ -43,7 +43,7 @@ const GameControls = (formProps: FormProps) => {
             defaultValue={formProps.gameConfig.mines}
           />
         </div>
-        <button type="submit">New Game</button>
+        <button className="config__form-button" type="submit">New Game</button>
       </form>
   )
 }

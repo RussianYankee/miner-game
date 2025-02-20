@@ -15,18 +15,6 @@ interface GameBoardProps {
 }
 
 const GameBoard = (boardProps: GameBoardProps) => {
-  // const [isMobile, setIsMobile] = useState(false);
-
-  // useEffect(() => {
-  //   const checkMobile = () => {
-  //     setIsMobile(window.matchMedia("(max-width: 768px)").matches);
-  //   };
-    
-  //   checkMobile();
-  //   window.addEventListener('resize', checkMobile);
-  //   return () => window.removeEventListener('resize', checkMobile);
-  // }, []);
-
   const cellIsEmpty = (c: CellState) => c.isRevealed && !c.isMine && c.neighborMines === 0;
   const cellIsMined = (c: CellState) => c.isRevealed && c.isMine;
   const cellIsFlagged = (c: CellState) => c.isFlagged === true;
@@ -59,7 +47,7 @@ const GameBoard = (boardProps: GameBoardProps) => {
                   cell.isFlagged ? 'flagged' : ''
                 } ${cellIsMined(cell) ? 'mine' : ''} ${cellIsEmpty(cell) ? 'empty' : ''}`}
                 onClick={() => boardProps.handleCellClick(x, y)}
-                onContextMenu={(e) => !isMobile && boardProps.handleCellRightClick(e, x, y)}
+                onContextMenu={(e) => !boardProps.isMobile && boardProps.handleCellRightClick(e, x, y)}
                 onDragOver={handleDragOver}
                 onDrop={(e) => handleDrop(e, x, y)}
                 style={cellIsRevealedAndNotMined(cell) ? {color: `var(--mine-${cell.neighborMines}-color)`} : {}}

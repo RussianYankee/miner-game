@@ -73,7 +73,7 @@ export const useGameSetup = (gameConfig: GameConfig) => {
       const handleCellClick = (x: number, y: number) => {
         if (gameStatus !== 'playing') return;
         if (gameBoard[y][x].isFlagged && isMobile) {
-          handleCellRightClick(new MouseEvent<Element, MouseEvent>('contextmenu'), x, y);
+          handleCellRightClick(new MouseEvent('contextmenu'), x, y);
           return;
         }
     
