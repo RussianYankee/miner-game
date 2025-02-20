@@ -78,6 +78,8 @@
   cursor: pointer;
   background-color: var(--unopened-cell-color);
   font-weight: bold;
+  text-shadow: none;
+  border-radius: 6px;
 }
 
 .cell:hover {
@@ -116,7 +118,8 @@
 
 .mobile-instructions {
   font-size: 0.9em;
-  color: #666;
+  color: #000;
+  text-shadow: 0px 0px 10px #0000008f;
 }
 
 .draggable-flag {
@@ -129,6 +132,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-shadow: none;
 }
 
 @media (max-width: 768px) {
