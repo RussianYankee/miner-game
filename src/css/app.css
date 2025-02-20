@@ -55,6 +55,18 @@
   margin: 10px 0;
   font-size: 1.5em;
   font-weight: bold;
+  position: absolute;
+  top: 300px;
+  z-index: 2;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgb(0, 0, 0);
+}
+
+.mines-left {
+  margin: 10px 0;
+  font-size: 1.2em;
 }
 
 .game-board {
