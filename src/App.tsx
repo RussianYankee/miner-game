@@ -49,12 +49,12 @@ function App() {
       <GameControls gameConfig={gameConfig} handleFormSubmit={handleConfigSubmit} />
 
       {gameStatus !== 'playing' && (
-        <div className="game-status glass-effect">
+        <div className="game-status">
           {gameStatus === 'won' ? 'You Won!' : 'Game Over!'}
         </div>
       )}
 
-      <div className="game-info">
+      <div className="game-info glass-effect">
         <div className="mines-left">Mines Left: {minesLeft}</div>
         {isMobile && (
           <div className="mobile-controls">
