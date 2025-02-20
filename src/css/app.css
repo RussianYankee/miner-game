@@ -2,27 +2,6 @@
   max-width: 1280px;
   margin: 0 auto;
   text-align: center;
-  --mine-1-color: blue;
-  --mine-2-color: green;
-  --mine-3-color: red;
-  --mine-4-color: purple;
-  --mine-5-color: maroon;
-  --mine-6-color: turquoise;
-  --mine-7-color: black;
-  --mine-8-color: gray;
-  --border-color: #999;
-  --border-color-faded: #99999952;
-  --unopened-cell-color: #c2c2c2;
-  --revealed-cell-color: #e6e6e6;
-  --empty-cell-color: #f3f3f3;
-  --flagged-cell-color: #ffeb3b;
-  --mine-cell-color: #ff9999;
-  --hovered-cell-color: #ccc;
-  --border-width: 3px;
-  --config-form-input-bg-color: #f3e6ff;
-  --config-form-button-bg-color: #d3c1e4;
-  --config-form-button-hover-bg-color: #a888db;
-  --config-form-button-border-color: #9C92AC;
 }
 
 .minesweeper {
@@ -63,54 +42,6 @@
   font-style: normal;
 }
 
-.game-board {
-  border: var(--border-width) solid var(--border-color);
-  display: inline-block;
-  background-color: var(--border-color);
-}
-
-.board-row {
-  display: flex;
-}
-
-.cell {
-  width: 30px;
-  height: 30px;
-  border-right: var(--border-width) solid var(--border-color);
-  border-bottom: var(--border-width) solid var(--border-color);
-  border-top: var(--border-width) solid white;
-  border-left: var(--border-width) solid white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  background-color: var(--unopened-cell-color);
-  font-weight: bold;
-  text-shadow: none;
-  border-radius: 6px;
-}
-
-.cell:hover {
-  background-color: var(--hovered-cell-color);
-}
-
-.cell.revealed {
-  background-color: var(--revealed-cell-color);
-  border: var(--border-width) solid var(--border-color-faded);
-}
-
-.cell.revealed.empty {
-  background-color: var(--empty-cell-color);
-}
-
-.cell.revealed.mine {
-  background-color: var(--mine-cell-color);
-}
-
-.cell.flagged {
-  background-color: var(--flagged-cell-color);
-}
-
 .game-info {
   display: flex;
   align-items: center;
@@ -149,29 +80,9 @@
     top: 550px;
   }
 
-  .cell {
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
-    border-width: var(--border-width);
-  }
-
-  .game-board {
-    max-width: 100%;
-    overflow-x: auto;
-  }
-
   .game-info {
     flex-direction: column;
     gap: 10px;
-  }
-
-  /* Disable right-click context menu on mobile */
-  .cell {
-    touch-action: manipulation;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    user-select: none;
   }
 }
 

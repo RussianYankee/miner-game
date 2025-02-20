@@ -1,0 +1,23 @@
+#root {
+    --mine-1-color: blue;
+    --mine-2-color: green;
+    --mine-3-color: red;
+    --mine-4-color: purple;
+    --mine-5-color: maroon;
+    --mine-6-color: turquoise;
+    --mine-7-color: black;
+    --mine-8-color: gray;
+    --border-color: #999;
+    --border-color-faded: #99999952;
+    --unopened-cell-color: #c2c2c2;
+    --revealed-cell-color: #e6e6e6;
+    --empty-cell-color: #f3f3f3;
+    --flagged-cell-color: #ffeb3b;
+    --mine-cell-color: #ff9999;
+    --hovered-cell-color: #ccc;
+    --border-width: 3px;
+    --config-form-input-bg-color: #f3e6ff;
+    --config-form-button-bg-color: #d3c1e4;
+    --config-form-button-hover-bg-color: #a888db;
+    --config-form-button-border-color: #9C92AC;
+}

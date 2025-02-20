@@ -1,4 +1,6 @@
 @import 'fonts.css';
+@import 'variables.css';
 @import 'base.css';
 @import 'app.css';
+@import 'game-board.css';
 @import 'config-form.css';
