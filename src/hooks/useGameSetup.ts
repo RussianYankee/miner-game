@@ -5,6 +5,7 @@ import { CellState } from "../components/GameBoard";
 export const useGameSetup = (gameConfig: GameConfig) => {
     const [gameStatus, setGameStatus] = useState<'playing' | 'won' | 'lost'>('playing');
     const [gameBoard, setGameBoard] = useState<CellState[][]>([]);
+    const [minesLeft, setMinesLeft] = useState(gameConfig.mines);
 
     const initializeBoard = () => {
         // Create empty board
@@ -53,6 +54,7 @@ export const useGameSetup = (gameConfig: GameConfig) => {
           }
         }
     
+        setMinesLeft(gameConfig.mines);
         setGameBoard(board);
         setGameStatus('playing');
       };
@@ -85,6 +87,7 @@ export const useGameSetup = (gameConfig: GameConfig) => {
     
         const newBoard = [...gameBoard.map(row => [...row])];
         newBoard[y][x].isFlagged = !newBoard[y][x].isFlagged;
+        newBoard[y][x].isFlagged ? setMinesLeft(minesLeft - 1) : setMinesLeft(minesLeft + 1);
         setGameBoard(newBoard);
       };
 
@@ -127,6 +130,7 @@ export const useGameSetup = (gameConfig: GameConfig) => {
         return {
             gameStatus,
             gameBoard,
+            minesLeft,
             initializeBoard,
             handleCellClick,
             handleCellRightClick

@@ -13,7 +13,8 @@ function App() {
 
   const { 
     gameStatus,
-    gameBoard, 
+    gameBoard,
+    minesLeft,
     initializeBoard,
     handleCellClick,
     handleCellRightClick
@@ -46,6 +47,8 @@ function App() {
           {gameStatus === 'won' ? 'You Won!' : 'Game Over!'}
         </div>
       )}
+
+      <div className="mines-left">Mines Left: {minesLeft}</div>
 
       <GameBoard
         gameBoard={gameBoard}
