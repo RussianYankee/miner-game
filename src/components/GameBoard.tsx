@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export type CellState = {
   isMine: boolean;
@@ -14,6 +14,17 @@ interface GameBoardProps {
 }
 
 const GameBoard = (boardProps: GameBoardProps) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const cellIsEmpty = (c: CellState) => c.isRevealed && !c.isMine && c.neighborMines === 0;
   const cellIsMined = (c: CellState) => c.isRevealed && c.isMine;
@@ -22,6 +33,19 @@ const GameBoard = (boardProps: GameBoardProps) => {
   const cellHasNeighborMines = (c: CellState) => c.neighborMines > 0;
   const cellIsNotRevealedAndFlagged = (c: CellState) => !cellIsRevealed(c) && cellIsFlagged(c);
   const cellIsRevealedAndNotMined = (c: CellState) => cellIsRevealed(c) && !c.isMine && cellHasNeighborMines(c);
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'copy';
+  };
+
+  const handleDrop = (e: React.DragEvent, x: number, y: number) => {
+    e.preventDefault();
+    const data = e.dataTransfer.getData('text/plain');
+    if (data === 'flag') {
+      boardProps.handleCellRightClick(e as any, x, y);
+    }
+  };
 
   return (
     <div className="game-board">
@@ -34,7 +58,9 @@ const GameBoard = (boardProps: GameBoardProps) => {
                   cell.isFlagged ? 'flagged' : ''
                 } ${cellIsMined(cell) ? 'mine' : ''} ${cellIsEmpty(cell) ? 'empty' : ''}`}
                 onClick={() => boardProps.handleCellClick(x, y)}
-                onContextMenu={(e) => boardProps.handleCellRightClick(e, x, y)}
+                onContextMenu={(e) => !isMobile && boardProps.handleCellRightClick(e, x, y)}
+                onDragOver={handleDragOver}
+                onDrop={(e) => handleDrop(e, x, y)}
                 style={cellIsRevealedAndNotMined(cell) ? {color: `var(--mine-${cell.neighborMines}-color)`} : {}}
               >
                 {cellIsRevealedAndNotMined(cell)

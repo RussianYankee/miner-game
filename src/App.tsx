@@ -3,6 +3,7 @@ import './css/app.css'
 import GameControls, { GameConfig } from './components/GameControls';
 import GameBoard from './components/GameBoard';
 import { useGameSetup } from './hooks/useGameSetup';
+import DraggableFlag from './components/DraggableFlag';
 
 function App() {
   const [gameConfig, setGameConfig] = useState<GameConfig>({
@@ -19,6 +20,8 @@ function App() {
     handleCellClick,
     handleCellRightClick
   } = useGameSetup(gameConfig);
+
+  const [isMobile, setIsMobile] = useState(false);
 
   const handleConfigSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,6 +43,16 @@ function App() {
      initializeBoard();
    }, [gameConfig]);
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <div className="minesweeper">
       <h1>Minesweeper</h1>
@@ -52,7 +65,15 @@ function App() {
         </div>
       )}
 
-      <div className="mines-left">Mines Left: {minesLeft}</div>
+      <div className="game-info">
+        <div className="mines-left">Mines Left: {minesLeft}</div>
+        {isMobile && (
+          <div className="mobile-controls">
+            <div className="mobile-instructions">Drag flag to mark mines:</div>
+            <DraggableFlag />
+          </div>
+        )}
+      </div>
 
       <GameBoard
         gameBoard={gameBoard}
