@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './css/app.css'
 import GameControls, { GameConfig } from './components/GameControls';
 import GameBoard from './components/GameBoard';
@@ -33,8 +33,12 @@ function App() {
     }
 
     setGameConfig({ width, height, mines });
-    initializeBoard();
   };
+
+  // Initialize the board when the gameConfig changes
+   useEffect(() => {
+     initializeBoard();
+   }, [gameConfig]);
 
   return (
     <div className="minesweeper">
