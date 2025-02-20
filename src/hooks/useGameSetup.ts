@@ -75,7 +75,7 @@ export const useGameSetup = (gameConfig: GameConfig) => {
         if (gameBoard[y][x].isFlagged && isMobile) {
           handleCellRightClick(new MouseEvent('contextmenu'), x, y);
           return;
-        }
+        } else if (gameBoard[y][x].isFlagged) return;
     
         const newBoard = [...gameBoard.map(row => [...row])];
         
@@ -98,7 +98,7 @@ export const useGameSetup = (gameConfig: GameConfig) => {
     
       const handleCellRightClick = (e: React.MouseEvent, x: number, y: number) => {
         e.preventDefault();
-        if (gameStatus !== 'playing' || gameBoard[y][x].isRevealed) return;
+        if (gameStatus !== 'playing' || gameBoard[y][x].isRevealed || minesLeft <= 0) return;
     
         const newBoard = [...gameBoard.map(row => [...row])];
         newBoard[y][x].isFlagged = !newBoard[y][x].isFlagged;
