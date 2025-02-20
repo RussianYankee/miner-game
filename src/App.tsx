@@ -59,7 +59,7 @@ function App() {
         {isMobile && (
           <div className="mobile-controls">
             <div className="mobile-instructions">Drag flag to mark mines:</div>
-            <DraggableFlag />
+            <DraggableFlag isDraggable={minesLeft > 0} />
           </div>
         )}
       </div>

@@ -1,6 +1,10 @@
 import React from 'react';
 
-const DraggableFlag: React.FC = () => {
+interface DraggableFlagProps {
+  isDraggable: boolean;
+}
+
+const DraggableFlag = (flagProps: DraggableFlagProps) => {
   const handleDragStart = (e: React.DragEvent) => {
     e.dataTransfer.setData('text/plain', 'flag');
     e.dataTransfer.effectAllowed = 'copy';
@@ -9,7 +13,7 @@ const DraggableFlag: React.FC = () => {
   return (
     <div 
       className="draggable-flag"
-      draggable="true"
+      draggable={flagProps.isDraggable}
       onDragStart={handleDragStart}
     >
       🚩
