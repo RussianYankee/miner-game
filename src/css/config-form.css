@@ -20,15 +20,15 @@
     padding: 10px;
     border: 1px solid var(--border-color);
     border-radius: 6px;
-    background-color: #f3e6ff;
+    background-color: var(--config-form-input-bg-color);
   }
   
   .config__form-button {
     padding: 10px 10px;
     cursor: pointer;
     border-radius: 6px;
-    border: 2px solid #9C92AC;
-    background-color: #d3c1e4;
+    border: 2px solid var(--config-form-button-border-color);
+    background-color: var(--config-form-button-bg-color);
     color: black;
     font-family: "Ribeye", serif;
     font-weight: 700;
@@ -36,7 +36,7 @@
   }
 
   .config__form-button:hover {
-    background-color: #a888db;
+    background-color: var(--config-form-button-hover-bg-color);
     color: white;
   }
 
