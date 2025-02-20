@@ -13,10 +13,22 @@
   
   .config-form input {
     width: 60px;
-    padding: 5px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
   }
   
   .config-form button {
-    padding: 5px 10px;
+    padding: 10px 10px;
     cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid darkgreen;
+    background-color: lightgreen;
+    color: black;
+    font-weight: bold;
+  }
+
+  .config-form button:hover {
+    background-color: darkgreen;
+    color: white;
   }
