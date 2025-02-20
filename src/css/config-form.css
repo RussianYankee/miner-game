@@ -20,14 +20,15 @@
     padding: 10px;
     border: 1px solid var(--border-color);
     border-radius: 6px;
+    background-color: #f3e6ff;
   }
   
   .config__form-button {
     padding: 10px 10px;
     cursor: pointer;
     border-radius: 6px;
-    border: 1px solid darkgreen;
-    background-color: lightgreen;
+    border: 2px solid #9C92AC;
+    background-color: #d3c1e4;
     color: black;
     font-family: "Ribeye", serif;
     font-weight: 700;
@@ -35,7 +36,7 @@
   }
 
   .config__form-button:hover {
-    background-color: darkgreen;
+    background-color: #a888db;
     color: white;
   }
 
