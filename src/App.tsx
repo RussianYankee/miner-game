@@ -49,7 +49,7 @@ function App() {
       <GameControls gameConfig={gameConfig} handleFormSubmit={handleConfigSubmit} />
 
       {gameStatus !== 'playing' && (
-        <div className="game-status">
+        <div className="game-status glass-effect">
           {gameStatus === 'won' ? 'You Won!' : 'Game Over!'}
         </div>
       )}

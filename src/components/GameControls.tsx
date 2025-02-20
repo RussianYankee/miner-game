@@ -12,7 +12,7 @@ interface FormProps {
 
 const GameControls = (formProps: FormProps) => {
   return (
-    <form onSubmit={formProps.handleFormSubmit} className="config__form">
+    <form onSubmit={formProps.handleFormSubmit} className="config__form glass-effect">
         <div className="config__item">
           <label className="config__item-label">Width: </label>
           <input className="config__item-input"

@@ -46,14 +46,17 @@
   position: absolute;
   top: 300px;
   z-index: 2;
-  backdrop-filter: blur(10px);
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.63);
+}
+
+.glass-effect {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .mines-left {
-  margin: 10px 0;
   font-size: 1.2em;
   font-family: "Ribeye", serif;
   font-weight: 400;
