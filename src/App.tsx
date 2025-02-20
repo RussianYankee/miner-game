@@ -7,8 +7,8 @@ import DraggableFlag from './components/DraggableFlag';
 
 function App() {
   const [gameConfig, setGameConfig] = useState<GameConfig>({
-    width: 10,
-    height: 10,
+    width: 8,
+    height: 8,
     mines: 10
   });
 
@@ -16,12 +16,11 @@ function App() {
     gameStatus,
     gameBoard,
     minesLeft,
+    isMobile,
     initializeBoard,
     handleCellClick,
     handleCellRightClick
   } = useGameSetup(gameConfig);
-
-  const [isMobile, setIsMobile] = useState(false);
 
   const handleConfigSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,19 +42,9 @@ function App() {
      initializeBoard();
    }, [gameConfig]);
 
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
   return (
     <div className="minesweeper">
-      <h1>Minesweeper</h1>
+      <h1 className="title">Minesweeper</h1>
 
       <GameControls gameConfig={gameConfig} handleFormSubmit={handleConfigSubmit} />
 
@@ -79,6 +68,7 @@ function App() {
         gameBoard={gameBoard}
         handleCellClick={handleCellClick}
         handleCellRightClick={handleCellRightClick}
+        isMobile={isMobile}
       />
     </div>
   )

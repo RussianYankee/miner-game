@@ -28,6 +28,13 @@
   padding: 20px;
 }
 
+.title {
+  font-size: 2em;
+  font-family: "Ribeye", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .game-status {
   margin: 10px 0;
   font-size: 1.5em;
@@ -44,6 +51,9 @@
 .mines-left {
   margin: 10px 0;
   font-size: 1.2em;
+  font-family: "Ribeye", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .game-board {
@@ -122,6 +132,10 @@
 }
 
 @media (max-width: 768px) {
+  .game-status {
+    top: 550px;
+  }
+
   .cell {
     width: 40px;
     height: 40px;
@@ -132,19 +146,6 @@
   .game-board {
     max-width: 100%;
     overflow-x: auto;
-  }
-
-  .config-form {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .config-form div {
-    justify-content: space-between;
-  }
-
-  .config-form input {
-    width: 100px;
   }
 
   .game-info {

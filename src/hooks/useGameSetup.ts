@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { GameConfig } from "../components/GameControls";
 import { CellState } from "../components/GameBoard";
 
@@ -6,6 +6,17 @@ export const useGameSetup = (gameConfig: GameConfig) => {
     const [gameStatus, setGameStatus] = useState<'playing' | 'won' | 'lost'>('playing');
     const [gameBoard, setGameBoard] = useState<CellState[][]>([]);
     const [minesLeft, setMinesLeft] = useState(gameConfig.mines);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+      const checkMobile = () => {
+        setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+      };
+      
+      checkMobile();
+      window.addEventListener('resize', checkMobile);
+      return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     const initializeBoard = () => {
         // Create empty board
@@ -60,7 +71,11 @@ export const useGameSetup = (gameConfig: GameConfig) => {
       };
 
       const handleCellClick = (x: number, y: number) => {
-        if (gameStatus !== 'playing' || gameBoard[y][x].isFlagged) return;
+        if (gameStatus !== 'playing') return;
+        if (gameBoard[y][x].isFlagged && isMobile) {
+          handleCellRightClick(new MouseEvent<Element, MouseEvent>('contextmenu'), x, y);
+          return;
+        }
     
         const newBoard = [...gameBoard.map(row => [...row])];
         
@@ -131,6 +146,7 @@ export const useGameSetup = (gameConfig: GameConfig) => {
             gameStatus,
             gameBoard,
             minesLeft,
+            isMobile,
             initializeBoard,
             handleCellClick,
             handleCellRightClick

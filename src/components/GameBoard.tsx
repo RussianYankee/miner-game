@@ -9,22 +9,23 @@ export type CellState = {
 
 interface GameBoardProps {
     gameBoard: CellState[][],
+    isMobile: boolean,
     handleCellClick: (x: number, y: number) => void,
     handleCellRightClick: (e: React.MouseEvent, x: number, y: number) => void
 }
 
 const GameBoard = (boardProps: GameBoardProps) => {
-  const [isMobile, setIsMobile] = useState(false);
+  // const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
-    };
+  // useEffect(() => {
+  //   const checkMobile = () => {
+  //     setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+  //   };
     
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  //   checkMobile();
+  //   window.addEventListener('resize', checkMobile);
+  //   return () => window.removeEventListener('resize', checkMobile);
+  // }, []);
 
   const cellIsEmpty = (c: CellState) => c.isRevealed && !c.isMine && c.neighborMines === 0;
   const cellIsMined = (c: CellState) => c.isRevealed && c.isMine;
