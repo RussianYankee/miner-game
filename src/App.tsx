@@ -4,6 +4,7 @@ import GameControls, { GameConfig } from './components/GameControls';
 import GameBoard from './components/GameBoard';
 import { useGameSetup } from './hooks/useGameSetup';
 import DraggableFlag from './components/DraggableFlag';
+import settingsIcon from './assets/settings.png';
 
 function App() {
   const [gameConfig, setGameConfig] = useState<GameConfig>({
@@ -44,7 +45,10 @@ function App() {
 
   return (
     <div className="minesweeper">
-      <h1 className="title">Minesweeper</h1>
+      <div className="page__header">
+        <h1 className="title">Minesweeper</h1>
+        <img src={settingsIcon} alt="" className="header__settings-btn" />
+      </div>
 
       <GameControls gameConfig={gameConfig} handleFormSubmit={handleConfigSubmit} />
 
