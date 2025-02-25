@@ -38,7 +38,7 @@ const GamePage = ({gameConfig, setGameConfig}:GamePageProps) => {
         )}
 
         <div className="game-controls">
-          <button className='config__form-button' onClick={startNewGame}>New Game</button>
+          <button className='config__form-button new-game-btn' onClick={startNewGame}>New Game</button>
         </div>
 
         <div className="game-info glass-effect">

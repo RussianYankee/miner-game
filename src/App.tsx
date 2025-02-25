@@ -16,8 +16,8 @@ function App() {
 
   return (
     <div className="minesweeper">      
-      <HeaderBar />
       <Router>
+        <HeaderBar />
         <Routes>
           <Route path="/" 
                  element={<GamePage gameConfig={gameConfig} setGameConfig={setGameConfig}/>} />

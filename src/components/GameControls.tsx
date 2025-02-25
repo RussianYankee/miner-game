@@ -11,11 +11,11 @@ interface FormProps {
     handleFormSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 
-const GameControls = (formProps: FormProps) => {
-  const [maxMines, setMaxMines] = useState(formProps.gameConfig.width * formProps.gameConfig.height - 1);
+const GameControls = ({gameConfig, handleFormSubmit}: FormProps) => {
+  const [maxMines, setMaxMines] = useState(gameConfig.width * gameConfig.height - 1);
   const [localState, setLocalState] = useState({
-    width: formProps.gameConfig.width,
-    height: formProps.gameConfig.height
+    width: gameConfig.width,
+    height: gameConfig.height
   });
   // Update maxMines when gameConfig changes
   useEffect(() => {
@@ -30,7 +30,7 @@ const GameControls = (formProps: FormProps) => {
   }
 
   return (
-    <form onSubmit={formProps.handleFormSubmit} className="config__form glass-effect">
+    <form onSubmit={handleFormSubmit} className="config__form glass-effect">
         <div className="config__item">
           <label className="config__item-label">Width: </label>
           <input className="config__item-input"
@@ -38,7 +38,7 @@ const GameControls = (formProps: FormProps) => {
             name="width"
             min="5"
             max="30"
-            defaultValue={formProps.gameConfig.width}
+            defaultValue={gameConfig.width}
             onChange={handleInput}
           />
         </div>
@@ -49,7 +49,7 @@ const GameControls = (formProps: FormProps) => {
             name="height"
             min="5"
             max="30"
-            defaultValue={formProps.gameConfig.height}
+            defaultValue={gameConfig.height}
             onChange={handleInput}
           />
         </div>
@@ -60,10 +60,10 @@ const GameControls = (formProps: FormProps) => {
             name="mines"
             min="1"
             max={maxMines}
-            defaultValue={formProps.gameConfig.mines}
+            defaultValue={gameConfig.mines}
           />
         </div>
-        <button className="config__form-button" type="submit">New Game</button>
+        <button className="config__form-button" type="submit">Apply</button>
       </form>
   )
 }
