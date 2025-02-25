@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useGameSetup } from '../hooks/useGameSetup';
-import GameControls, { GameConfig } from '../components/GameControls';
+import { GameConfig } from '../components/GameControls';
 import GameBoard from '../components/GameBoard';
 import DraggableFlag from '../components/DraggableFlag';
 
-const GamePage = () => {
-    const [gameConfig, setGameConfig] = useState<GameConfig>({
-        width: 8,
-        height: 8,
-        mines: 10
-      });
+interface GamePageProps {
+  gameConfig: GameConfig;
+  setGameConfig: React.Dispatch<React.SetStateAction<GameConfig>>;
+}
+const GamePage = ({gameConfig, setGameConfig}:GamePageProps) => {
     
       const { 
         gameStatus,
@@ -21,29 +20,12 @@ const GamePage = () => {
         handleCellRightClick
       } = useGameSetup(gameConfig);
     
-      const handleConfigSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-        const width = Number(formData.get('width'));
-        const height = Number(formData.get('height'));
-        const mines = Number(formData.get('mines'));
-    
-        if (mines >= width * height) {
-          alert('Too many mines for the given field size!');
-          return;
-        }
-    
-        setGameConfig({ width, height, mines });
-      };
-    
       // Initialize the board when the gameConfig changes
        useEffect(() => {
          initializeBoard();
        }, [gameConfig]);
   return (
     <>
-        <GameControls gameConfig={gameConfig} handleFormSubmit={handleConfigSubmit} />
-
         {gameStatus !== 'playing' && (
         <div className="game-status">
             {gameStatus === 'won' ? 'You Won!' : 'Game Over!'}
