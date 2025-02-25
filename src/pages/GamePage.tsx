@@ -24,6 +24,11 @@ const GamePage = ({gameConfig, setGameConfig}:GamePageProps) => {
        useEffect(() => {
          initializeBoard();
        }, [gameConfig]);
+
+      const startNewGame = () => {
+        setGameConfig({...gameConfig});
+      }
+
   return (
     <>
         {gameStatus !== 'playing' && (
@@ -31,6 +36,10 @@ const GamePage = ({gameConfig, setGameConfig}:GamePageProps) => {
             {gameStatus === 'won' ? 'You Won!' : 'Game Over!'}
         </div>
         )}
+
+        <div className="game-controls">
+          <button className='config__form-button' onClick={startNewGame}>New Game</button>
+        </div>
 
         <div className="game-info glass-effect">
         <div className="mines-left">Mines Left: {minesLeft}</div>

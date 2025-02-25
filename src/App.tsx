@@ -14,21 +14,6 @@ function App() {
     mines: 10
   });
 
-  const handleConfigSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-          e.preventDefault();
-          const formData = new FormData(e.currentTarget);
-          const width = Number(formData.get('width'));
-          const height = Number(formData.get('height'));
-          const mines = Number(formData.get('mines'));
-      
-          if (mines >= width * height) {
-            alert('Too many mines for the given field size!');
-            return;
-          }
-      
-          setGameConfig({ width, height, mines });
-        };
-
   return (
     <div className="minesweeper">      
       <HeaderBar />
@@ -37,7 +22,7 @@ function App() {
           <Route path="/" 
                  element={<GamePage gameConfig={gameConfig} setGameConfig={setGameConfig}/>} />
           <Route path="/settings"
-                 element={<SettingsPage gameConfig={gameConfig} handleConfigSubmit={handleConfigSubmit}/>} />    
+                 element={<SettingsPage gameConfig={gameConfig} setGameConfig={setGameConfig}/>} />    
         </Routes>
       </Router>      
     </div>
