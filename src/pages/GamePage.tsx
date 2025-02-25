@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useGameSetup } from '../hooks/useGameSetup';
 import { GameConfig } from '../components/GameControls';
 import GameBoard from '../components/GameBoard';
